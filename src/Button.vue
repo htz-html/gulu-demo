@@ -10,7 +10,19 @@
 </template>
 <script>
 export default {
-  props: ["icon", "iconPosition"], //left,right
+  // props: ["icon", "iconPosition"], //left,right
+  //props的第二种写法
+  props:{
+    icon: {},
+    iconPosition:{
+      type:String,
+      default:'left',
+      // 属性检查器validator
+      validator(value){
+        return !(value !== 'left' && value !== 'right')
+      }
+    }
+  }
 };
 </script>
 <style lang="scss">
