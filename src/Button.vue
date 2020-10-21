@@ -1,8 +1,6 @@
 <template>
   <button class="g-button" :class="{[`icon-${iconPosition}`]:true}">
-    <svg v-if="icon" class="icon">
-      <use :xlink:href="`#i-${icon}`"></use>
-    </svg>
+    <g-icon v-if="icon" :name="icon"></g-icon>
     <div class="content">
       <slot></slot>
     </div>
@@ -13,7 +11,7 @@ export default {
   // props: ["icon", "iconPosition"], //left,right
   //props的第二种写法
   props:{
-    icon: {},
+    icon:{},
     iconPosition:{
       type:String,
       default:'left',
@@ -47,17 +45,15 @@ export default {
   &:focus {
     outline: none;
   }
-  > .icon {
+  > .g-icon {
     order: 1;
     margin-right: 0.1em;
-    width: 1em;
-    height: 1em;
   }
   > .content {
     order: 2;
   }
   &.icon-right {
-    > .icon {
+    > .g-icon {
       order: 2;
       margin-right: 0;
       margin-left: 0.1em;
