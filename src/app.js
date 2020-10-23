@@ -20,6 +20,8 @@ new Vue({
 });
 
 import {expect} from 'chai'
+import spies from 'chai-spies'
+chai.use(spies);
 //单元测试
 {
   const Constructor = Vue.extend(Button);
@@ -95,9 +97,11 @@ import {expect} from 'chai'
     }
   });
   vm.$mount()
-  vm.$on('click',function(){
-    expect(1).to.eq(1)
-  })
-  vm.$el.remove()
-  vm.$destroy()
+  let spy = chai.spy(function(){})
+  vm.$on('click',spy) //触发spy
+  //希望这个函数被执行
+  let button = vm.$el;
+  button.click()
+  //期望button.click()的时候，期望我们的间谍（spy间谍的意思）被执行了
+  expect(spy).to.have.been.called();
 }
