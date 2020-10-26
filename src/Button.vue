@@ -9,10 +9,14 @@
   </button>
 </template>
 <script>
+import Icon from './Icon'
 export default {
   // props: ["icon", "iconPosition"], //left,right
   //props的第二种写法
   name: 'GuluButton',
+  components:{
+    'g-icon' : Icon
+  },
   props:{
     icon:{},
     loading:{
