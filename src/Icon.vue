@@ -5,6 +5,7 @@
 </template>
 <script>
 export default {
+  name:'GuluIcon',
   props: ["name"],
 };
 </script>
