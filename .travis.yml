@@ -12,7 +12,7 @@
   "addons": {
     "chrome": "stable"
   },
-  "sudo": true,
+  # "sudo": true,
   "before_install": [
     "sudo pip install foo"
   ],
