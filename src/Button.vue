@@ -9,7 +9,7 @@
   </button>
 </template>
 <script>
-import Icon from './Icon'
+import Icon from './icon'
 export default {
   // props: ["icon", "iconPosition"], //left,right
   //props的第二种写法
