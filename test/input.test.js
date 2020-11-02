@@ -77,6 +77,10 @@ describe('Input', () => {
         .forEach((eventName)=>{
         vm.$on(eventName, callback)
         let event = new Event(eventName);
+        // 开始使用这个不行，才用的下面Object.defineProperty
+        // event.target = {
+        //   value: 'hi'
+        // }
         Object.defineProperty(
           event, 'target', {
             value: { value: 'hi'}, enumerable:true
