@@ -77,14 +77,19 @@ describe('Input', () => {
         .forEach((eventName)=>{
         vm.$on(eventName, callback)
         let event = new Event(eventName);
+        Object.defineProperty(
+          event, 'target', {
+            value: { value: 'hi'}, enumerable:true
+          }
+        )
         let inputElement = vm.$el.querySelector('input')
         inputElement.dispatchEvent(event)
-        expect(callback).to.have.been.calledWith(event)
+        expect(callback).to.have.been.calledWith('hi')
       })
     })
 
     // it('支持 input 事件', () => {
-    //   vm.$on('input', callback)
+    //   vm.$on('input', callback) 
     //   let event = new Event('input');
     //   let inputElement = vm.$el.querySelector('input')
     //   inputElement.dispatchEvent(event)
