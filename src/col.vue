@@ -1,11 +1,11 @@
 <template>
-    <div class="col" :class="[`col-${span}`, offset && `offset-${offset}`]" :style="{paddingLeft: gutter/2 +'px', paddingRight: gutter/2 + 'px'}">
-      <div style="height:40px;background:#d2efeb;border-radius:5px;">
+    <div class="col" :class="colClass" :style="colStyle">
+      <!-- 下面整个div是多余的，为了好看，暂时加上 -->
+      <div style="height:40px;background:#dce8f1;border-radius:5px;">
         <slot></slot>
       </div>
     </div>
 </template> 
-
 <script>
 export default {
   name:"GuluCol",
@@ -21,10 +21,24 @@ export default {
     return{
       gutter:0
     }
+  },
+  computed:{
+    colStyle(){
+      return {
+        paddingLeft: this.gutter/2 +'px', 
+        paddingRight: this.gutter/2 + 'px'
+      }
+    },
+    colClass(){
+      let {span, offset} = this
+      return [
+        `col-${span}`, 
+        offset && `offset-${offset}`
+      ]
+    }
   }
 };
 </script>
-
 <style lang="scss" scoped>
 .col {
   width: 50%;
