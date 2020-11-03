@@ -15,7 +15,8 @@
         box-sizing: border-box;
       }
       #app {
-        margin: 20px;
+        margin: 20px auto;
+        width: 1000px;
       }
       body {
         font-size: var(--font-size);
@@ -37,18 +38,28 @@
   </head>
   <body>
     <div id="app">
-      <g-row>
-        <g-col :span="2">1</g-col>
-        <g-col :span="6">2</g-col>
-        <g-col :span="16">3</g-col>
-      </g-row>
-      <g-row>
-        <g-col :span="2">1</g-col>
-        <g-col :span="6">2</g-col>
-        <g-col :span="14" offset="2">3</g-col>
-      </g-row>
-
-      <hr>
+      <div>
+        <g-row style="margin-bottom:10px">
+          <g-col :span="4"></g-col>
+          <g-col :span="8"></g-col>
+          <g-col :span="12"></g-col>
+        </g-row>
+        <g-row gutter="20" style="margin-bottom:10px">
+          <g-col></g-col>
+          <g-col></g-col>
+          <g-col></g-col>
+        </g-row>
+        <g-row gutter="20" style="margin-bottom:10px">
+          <g-col :span="2"></g-col>
+          <g-col :span="6"></g-col>
+          <g-col :span="16"></g-col>
+        </g-row>
+        <g-row style="margin-bottom:10px">
+          <g-col :span="2"></g-col>
+          <g-col :span="4" offset="2"></g-col>
+          <g-col :span="10" offset="6"></g-col>
+        </g-row>
+      </div>
       <div class="box">
         <g-input value="张三" disabled></g-input>
         <g-input value="李四" readonly></g-input>
