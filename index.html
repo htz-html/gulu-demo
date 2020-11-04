@@ -15,8 +15,7 @@
         box-sizing: border-box;
       }
       #app {
-        margin: 20px auto;
-        width: 1000px;
+        margin: 20px;
       }
       body {
         font-size: var(--font-size);
@@ -40,14 +39,14 @@
     <div id="app">
       <div>
         <g-row style="margin-bottom:10px">
-          <g-col :span="4"></g-col>
-          <g-col :span="8"></g-col>
-          <g-col :span="12"></g-col>
+          <g-col :span="4" :phone="{span:1}"></g-col>
+          <g-col :span="8" :phone="{span:20}"></g-col>
+          <g-col :span="12" :phone="{span:3}"></g-col>
         </g-row>
         <g-row gutter="20" style="margin-bottom:10px">
-          <g-col></g-col>
-          <g-col></g-col>
-          <g-col></g-col>
+          <g-col :span="8"></g-col>
+          <g-col :span="8"></g-col>
+          <g-col :span="8"></g-col>
         </g-row>
         <g-row gutter="20" style="margin-bottom:10px">
           <g-col :span="2"></g-col>
@@ -60,6 +59,7 @@
           <g-col :span="10" offset="6"></g-col>
         </g-row>
       </div>
+
       <div class="box">
         <g-input value="张三" disabled></g-input>
         <g-input value="李四" readonly></g-input>

@@ -33,7 +33,7 @@ export default {
     },
     rowClass(){
       let {align} = this;
-      return [`align-${align}`]
+      return [align && `align-${align}`]
     }
   }
 };

@@ -1,42 +1,62 @@
 <template>
-    <div class="col" :class="colClass" :style="colStyle">
-      <!-- 下面整个div是多余的，为了好看，暂时加上 -->
-      <div style="height:40px;background:#dce8f1;border-radius:5px;">
-        <slot></slot>
-      </div>
+  <div class="col" :class="colClass" :style="colStyle">
+    <!-- 下面整个div是多余的，为了好看，暂时加上 -->
+    <div style="height: 40px; background: #dce8f1; border-radius: 5px">
+      <slot></slot>
     </div>
+  </div>
 </template> 
 <script>
+let validator = (value) => {
+  let keys = Object.keys(value);
+  let valid = true;
+  keys.forEach((key) => {
+    if (!["span", "offset"].includes(key)) {
+      valid = false;
+    }
+  });
+  return valid;
+};
 export default {
-  name:"GuluCol",
-  props:{
-    span:{
-      type:[Number,String]
+  name: "GuluCol",
+  props: {
+    span: {
+      type: [Number, String],
     },
-    offset:{
-      type:[Number,String]
-    }
+    offset: {
+      type: [Number, String],
+    },
+    phone: { type: Object,validator },
+    ipad: { type: Object,validator },
+    narrowPc: { type: Object,validator },
+    pc: { type: Object,validator },
+    widePc: { type: Object,validator }
   },
-  data(){
-    return{
-      gutter:0
-    }
+  data() {
+    return {
+      gutter: 0,
+    };
   },
-  computed:{
-    colStyle(){
+  computed: {
+    colStyle() {
       return {
-        paddingLeft: this.gutter/2 +'px', 
-        paddingRight: this.gutter/2 + 'px'
-      }
+        paddingLeft: this.gutter / 2 + "px",
+        paddingRight: this.gutter / 2 + "px",
+      };
     },
-    colClass(){
-      let {span, offset} = this
+    colClass() {
+      let { span, offset, phone, ipad ,narrowPc, pc, widePc } = this;
       return [
-        `col-${span}`, 
-        offset && `offset-${offset}`
-      ]
-    }
-  }
+        span && `col-${span}`,
+        offset && `offset-${offset}`,
+        ...(phone ? `col-phone-${phone.span}`: []),
+        ...(ipad ? `col-ipad-${ipad.span}`:[]),
+        ...(narrowPc ? `col-narrow-pc-${narrowPc.span}`:[]),
+        ...(pc ? `col-pc-${pc.span}`:[]),
+        ...(widePc ? `col-wide-pc-${widePc.span}`:[]),
+      ];
+    },
+  },
 };
 </script>
 <style lang="scss" scoped>
@@ -44,13 +64,69 @@ export default {
   $class-prefix: col-;
   @for $n from 1 through 24 {
     &.#{$class-prefix}#{$n} {
-      width: ($n/24)*100%;
+      width: ($n/24) * 100%;
     }
   }
   $class-prefix: offset-;
   @for $n from 1 through 24 {
     &.#{$class-prefix}#{$n} {
-      margin-left: ($n/24)*100%;
+      margin-left: ($n/24) * 100%;
+    }
+  }
+  @media (min-width: 577px) {
+    $class-prefix: col-ipad-;
+    @for $n from 1 through 24 {
+      &.#{$class-prefix}#{$n} {
+        width: ($n/24) * 100%;
+      }
+    }
+    $class-prefix: offset-ipad-;
+    @for $n from 1 through 24 {
+      &.#{$class-prefix}#{$n} {
+        margin-left: ($n/24) * 100%;
+      }
+    }
+  }
+  @media (min-width: 769px){
+    $class-prefix: col-narrowPc-;
+    @for $n from 1 through 24 {
+      &.#{$class-prefix}#{$n} {
+        width: ($n/24) * 100%;
+      }
+    }
+    $class-prefix: offset-narrowPc-;
+    @for $n from 1 through 24 {
+      &.#{$class-prefix}#{$n} {
+        margin-left: ($n/24) * 100%;
+      }
+    }
+  }
+  @media (min-width: 993px){
+    $class-prefix: col-pc-;
+    @for $n from 1 through 24 {
+      &.#{$class-prefix}#{$n} {
+        width: ($n/24) * 100%;
+      }
+    }
+    $class-prefix: offset-pc-;
+    @for $n from 1 through 24 {
+      &.#{$class-prefix}#{$n} {
+        margin-left: ($n/24) * 100%;
+      }
+    }
+  }
+  @media (min-width: 1201px){
+    $class-prefix: col-widePc-;
+    @for $n from 1 through 24 {
+      &.#{$class-prefix}#{$n} {
+        width: ($n/24) * 100%;
+      }
+    }
+    $class-prefix: offset-widePc-;
+    @for $n from 1 through 24 {
+      &.#{$class-prefix}#{$n} {
+        margin-left: ($n/24) * 100%;
+      }
     }
   }
 }
