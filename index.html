@@ -33,11 +33,32 @@
       .box {
         margin-top: 20px;
       }
+      h2{
+        margin-top: 10px;
+        line-height: 40px;
+        border-bottom: 3px solid rgb(128, 137, 160);
+      }
+      .demo{ 
+        min-height: 100px;
+        border: 1px solid #aaa;
+      }
     </style>
   </head>
   <body>
     <div id="app">
-      <div>
+      <h2>grid</h2>
+      <div class="box">
+        <g-layout>
+          <g-sider class="demo">sider</g-sider>
+          <g-layout>
+            <g-header class="demo">header</g-header>
+            <g-content class="demo">content</g-content>
+            <g-footer class="demo">footer</g-footer>
+          </g-layout>
+        </g-layout>
+      </div>
+      <h2>响应式布局</h2>
+      <div class="box">
         <g-row style="margin-bottom:10px">
           <g-col :span="4" :phone="{span:1}"></g-col>
           <g-col :span="8" :phone="{span:20}"></g-col>
@@ -53,13 +74,13 @@
           <g-col :span="6"></g-col>
           <g-col :span="16"></g-col>
         </g-row>
-        <g-row style="margin-bottom:10px" align="right">
-          <g-col :span="2"></g-col>
+        <g-row style="margin-bottom:10px">
           <g-col :span="4"></g-col>
-          <g-col :span="10"></g-col>
+          <g-col :span="8"></g-col>
+          <g-col :span="10" offset="2"></g-col>
         </g-row>
       </div>
-
+      <h2>form</h2>
       <div class="box">
         <g-input value="张三" disabled></g-input>
         <g-input value="李四" readonly></g-input>
@@ -75,6 +96,7 @@
       <div class="box">
         <g-input value="错误" error="姓名不能少于两个字"></g-input>
       </div>
+      <h2>按钮</h2>
       <div class="box">
         <g-button :loading="loading1" @click="loading1 = !loading1">按钮</g-button>
         <g-button icon="setting" :loading="loading2" @click="loading2=!loading2">按钮</g-button>
