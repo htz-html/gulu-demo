@@ -26,7 +26,6 @@ export default {
     offset: {
       type: [Number, String],
     },
-    phone: { type: Object,validator },
     ipad: { type: Object,validator },
     narrowPc: { type: Object,validator },
     pc: { type: Object,validator },
