@@ -3,7 +3,7 @@
   @click="$emit('click')">
     <g-icon class="icon" v-if="icon && !loading" :name="icon"></g-icon>
     <g-icon class="loading icon" v-if="loading" name="loading" style="fill:#888"></g-icon>
-    <div class="content">
+    <div class="btn-content">
       <slot></slot>
     </div>
   </button>
@@ -68,7 +68,7 @@ export default {
     order: 1;
     margin-right: 0.1em;
   }
-  > .content {
+  > .btn-content {
     order: 2;
   }
   &.icon-right {
