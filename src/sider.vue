@@ -12,6 +12,5 @@
 
 <style lang="scss" scoped>
 .sider{
-  width: 200px;
 }
 </style>
